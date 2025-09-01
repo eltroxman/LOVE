@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 18px;
+            color: #ff6b6b;
+            opacity: 0;
+            animation: fall 5s linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(400px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+        
+        h1 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 15px 0;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .page {
+            transition: opacity 0.5s ease;
+        }
+        
+        .final-message {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .final-text {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #5a2a2a;
+            font-weight: 500;
+        }
+        
+        .emoji {
+            font-size: 40px;
+            margin: 15px 0;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .photo-frame {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background-color: #ffd8d8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 5px solid #ff6b6b;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .photo-placeholder {
+            font-size: 60px;
+            color: #ff6b6b;
+        }
+        
+        /* Diseño responsivo para móviles */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+                border-radius: 15px;
+            }
+            
+            h1 {
+                font-size: 22px;
+            }
+            
+            p {
+                font-size: 15px;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 15px;
+            }
+            
+            .final-text {
+                font-size: 16px;
+            }
+            
+            .photo-frame {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Página 1: Inicio -->
+        <div class="page" id="page1">
+            <div class="photo-frame">
+                <div class="photo-placeholder">💖</div>
+            </div>
+            <h1>Para la persona más especial</h1>
+            <p>Hola mi amor, tengo algo especial para ti...</p>
+            <p>¿Te gustaría descubrir un mensaje que preparé con todo mi cariño?</p>
+            <button class="btn" onclick="showPage(2)">¡Sí, por favor!</button>
+        </div>
+        
+        <!-- Página 2: Pregunta Interactiva -->
+        <div class="page hidden" id="page2">
+            <h1>Antes de continuar...</h1>
+            <p>¿Recuerdas nuestra primera cita?</p>
+            <div class="emoji">😊</div>
+            <button class="btn" onclick="showPage(3)">¡Cómo olvidarlo!</button>
+            <button class="btn" onclick="showPage(3)" style="background-color: #ffac41;">Fue mágico</button>
+        </div>
+        
+        <!-- Página 3: Mensaje Intermedio -->
+        <div class="page hidden" id="page3">
+            <h1>Eres lo mejor que me ha pasado</h1>
+            <p>Cada día a tu lado es un regalo que atesoro con todo mi corazón.</p>
+            <div class="emoji">💕</div>
+            <button class="btn" onclick="showPage(4)">Continuar</button>
+        </div>
+        
+        <!-- Página 4: Mensaje Final -->
+        <div class="page hidden" id="page4">
+            <h1>Para ti, mi amor</h1>
+            <div class="final-message">
+                <p class="final-text">
+                    Hola amor gracias por estar en mi vida, gracias enserio por todo, por las risas, los momentos y todo. Enserio te amo mucho y recuerda que eres mi angelito bello.
+                </p>
+            </div>
+            <div class="emoji">💖</div>
+            <p>Con todo mi amor, para ti.</p>
+            <button class="btn" onclick="resetPages()">Volver a leer</button>
+        </div>
+    </div>
+
+    <script>
+        // Crear corazones que caen
+        function createHearts() {
+            const container = document.querySelector('.container');
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 4 + 3) + 's';
+            container.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        
+        // Crear corazones cada 300ms
+        setInterval(createHearts, 300);
+        
+        // Mostrar páginas
+        function showPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.add('hidden');
+            });
+            document.getElementById('page' + pageNumber).classList.remove('hidden');
+        }
+        
+        // Reiniciar las páginas
+        function resetPages() {
+            showPage(1);
+        }
+        
+        // Inicializar la página
+        window.onload = function() {
+            showPage(1);
+        };
+    </script>
+</body>
+</html>
